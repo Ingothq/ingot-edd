@@ -40,8 +40,8 @@ add_action( 'ingot_before', function(){
 					'id'                => '223',
 					'slug'              => 'edd',
 					'public_key'        => 'pk_432d5762f0117a9590536ef4739e9',
-					'is_premium'        => false,
-					'has_paid_plans'    => false,
+					'is_premium'        => true,
+					'has_paid_plans'    => true,
 					'is_org_compliant'  => false,
 					'parent'      => array(
 						'id'         => '210',
@@ -60,8 +60,11 @@ add_action( 'ingot_before', function(){
 		 */
 		add_action( 'ingot_loaded', 'ingot_edd_fs', 25 );
 
-		new add_destinations();
-		new tracking();
+		add_action( 'ingot_loaded', function(){
+			new add_destinations();
+			new tracking();
+		}, 26 );
+
 	}
 
 });

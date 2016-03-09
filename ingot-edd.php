@@ -60,9 +60,14 @@ add_action( 'ingot_before', function(){
 		 */
 		add_action( 'ingot_loaded', 'ingot_edd_fs', 25 );
 
+		/**
+		 * Boot add on
+		 */
 		add_action( 'ingot_loaded', function(){
-			new add_destinations();
-			new tracking();
+			if ( ingot_is_edd_active() ) {
+				new add_destinations();
+				new tracking();
+			}
 		}, 26 );
 
 	}
